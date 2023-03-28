@@ -1,22 +1,11 @@
 
 import { listCategory } from "./api/category.js";
 import chalk from "chalk";
-// import promptSync from "prompt-sync";
-// import { constantValues } from "./constants/consts.js";
+
 import { askName, prompt } from "./commands/commands.js";
 
 
 
-// const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
-
-// rl.question('Welcome to Chuck Norris Jokes!! What is your name? \n',
-//     (userInput) => {
-//         console.log(chalk.bgBlue(`Hello, ${userInput}. What kind of Chuck Norris joke would you like to hear? \n`));
-//         listCategory();
-//     }
-
-// )
-// const prompt = promptSync();
 const main = async () => {
     const name = askName();
 
@@ -26,7 +15,7 @@ const main = async () => {
     }
     while (true) {
         const command = prompt(">");
-        // console.log(command);
+
         switch (command) {
             case "c":
                 await listCategory();
