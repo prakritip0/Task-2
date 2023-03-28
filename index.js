@@ -16,7 +16,7 @@ import { constantValues } from "./constants/consts.js";
 
 // )
 const prompt = promptSync();
-const callPrompt = () => {
+const main = () => {
     console.log("\n \n " + chalk.green(constantValues.title) + "\n \n" + chalk.bgGreen(constantValues.description) + "\n\n" + constantValues.jokeCategories + chalk.red(constantValues.cKey) + "\n" + constantValues.backToStart + chalk.red(constantValues.gKey) + "\n" + constantValues.exitProgram + chalk.red(constantValues.xKey) + "\n");
     console.log(chalk.green("What is your name?"))
     const name = prompt(">>");
@@ -26,6 +26,6 @@ const callPrompt = () => {
     }
 
 }
-callPrompt();
+main();
 
 
