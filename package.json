@@ -5,5 +5,11 @@
   "main": "index.js",
   "repository": "git@github.com:prakritip0/task-2.git",
   "author": "Prakriti",
-  "license": "MIT"
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "axios": "^1.3.4",
+    "chalk": "^5.2.0",
+    "prompt-sync": "^4.2.0"
+  }
 }
