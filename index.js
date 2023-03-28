@@ -2,6 +2,7 @@ import readline from "readline";
 import { listCategory } from "./api/category.js";
 import chalk from "chalk";
 import promptSync from "prompt-sync";
+import { constantValues } from "./constants/consts.js";
 
 
 
@@ -16,7 +17,7 @@ import promptSync from "prompt-sync";
 // )
 const prompt = promptSync();
 const callPrompt = () => {
-    console.log(chalk.green(" \n \n       Welcome to Chuck Norris Jokes!!\n") + chalk.bgGreen("\nHere's a guide to better use our project;") + "\n\n" + "See Joke Categories : " + chalk.red("c") + "\n Go back to start : " + chalk.red("g") + "\n Exit the program : " + chalk.red("x\n "));
+    console.log("\n \n " + chalk.green(constantValues.title) + "\n \n" + chalk.bgGreen(constantValues.description) + "\n\n" + constantValues.jokeCategories + chalk.red(constantValues.cKey) + "\n" + constantValues.backToStart + chalk.red(constantValues.gKey) + "\n" + constantValues.exitProgram + chalk.red(constantValues.xKey) + "\n");
     console.log(chalk.green("What is your name?"))
     const name = prompt(">>");
     if (name) {
