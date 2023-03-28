@@ -1,0 +1,9 @@
+{
+  "name": "globaly-task-2",
+  "version": "1.0.0",
+  "description": "Chuck Norris Jokes Generator",
+  "main": "index.js",
+  "repository": "git@github.com:prakritip0/task-2.git",
+  "author": "Prakriti",
+  "license": "MIT"
+}
