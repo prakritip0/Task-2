@@ -6,8 +6,10 @@ export const listCategories = async () => {
         const categoryData = await axios.get("https://api.chucknorris.io/jokes/categories");
         categoryData.data.forEach((category, i) => {
             console.log(chalk.green("[" + (i + 1) + "]") + " " + chalk.green(category));
+
         });
     } catch (error) {
         console.error;
     }
+    console.log("\n" + chalk.bgGreen("Please enter one of the above categories to hear a joke!"));
 }
