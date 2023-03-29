@@ -19,5 +19,7 @@ git@github.com:prakritip0/task-2.git
 # Run
 
 ```
+run npm init OR run yarn init
+
  run node index.js
 ```
