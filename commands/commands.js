@@ -7,7 +7,7 @@ import { listCategories } from "../api/category.js";
 export const prompt = promptSync();
 
 const showWelcomeBanner = () => {
-    console.log("\n \n " + chalk.green(constantValues.title) + "\n \n" + chalk.bgGreen(constantValues.description) + "\n\n" + constantValues.jokeCategories + chalk.red(shortcuts.see_joke_categories) + "\n" + constantValues.backToStart + chalk.red(shortcuts.go_back_to_start) + "\n" + constantValues.exitProgram + chalk.red(shortcuts.exit_project) + "\n");
+    console.log("\n \n " + chalk.green(constantValues.title) + "\n \n" + chalk.bgGreen(constantValues.description) + "\n\n" + constantValues.jokeCategories + chalk.red(shortcuts.see_joke_categories) + "\n" + constantValues.backToStart + chalk.red(shortcuts.go_back_to_start) + "\n" + constantValues.exitProgram + chalk.red(shortcuts.exit_project) + "\n" + constantValues.viewJokesDatabase + chalk.red(shortcuts.view_jokes_database) + "\n");
 }
 
 export const askName = () => {
