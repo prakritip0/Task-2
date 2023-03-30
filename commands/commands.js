@@ -21,7 +21,7 @@ export const showAppTitle = () => {
 }
 
 export const showWelcomeBanner = () => {
-    console.log("\n \n" + chalk.bgGreen(constantValues.description) + "\n\n" + constantValues.jokeCategories + chalk.red(shortcuts.see_joke_categories) + "\n" + constantValues.backToStart + chalk.red(shortcuts.go_back_to_start) + "\n" + constantValues.exitProgram + chalk.red(shortcuts.exit_project) + "\n" + constantValues.viewJokesDatabase + chalk.red(shortcuts.view_jokes_database) + "\n" + constantValues.askForHelp + chalk.red(shortcuts.ask_for_help) + "\n");
+    console.log("\n \n" + chalk.bgGreen(constantValues.description) + "\n\n" + constantValues.jokeCategories + chalk.red(shortcuts.see_joke_categories) + "\n" + constantValues.exitProgram + chalk.red(shortcuts.exit_project) + "\n" + constantValues.viewJokesDatabase + chalk.red(shortcuts.view_jokes_database) + "\n" + constantValues.askForHelp + chalk.red(shortcuts.ask_for_help) + "\n");
 }
 
 export const askName = () => {
@@ -32,22 +32,39 @@ export const askName = () => {
 }
 
 const storeData = () => {
-
     const userDetails = JSON.stringify(finalData);
-    fs.writeFileSync(`${__dirname}/../files/${finalData.name}.json`, userDetails, (err) => {
-        if (err) {
-            console.log("error")
-            return
-        }
-        console.log("\n" + "Your jokes are saved on " + chalk.blue(finalData.name) + chalk.blue(".json") + ". Please enter " + chalk.blue("view") + " to view the file.");
+    const readerFile = fs.existsSync(`${__dirname}/../files/${finalData.name}.json`, "utf-8");
 
-    });
+    if (!readerFile) {
+        // console.log("doesntExist");
+        // console.log(readerFile);
+        fs.writeFileSync(`${__dirname}/../files/${finalData.name}.json`, userDetails, (err) => {
+            if (err) {
+                console.log("error")
+            }
+            console.log("\n" + "Your jokes are saved on " + chalk.blue(finalData.name) + chalk.blue(".json") + ". Please enter " + chalk.blue("view") + " to view the file.");
+
+        });
+        console.log("\n" + "Your jokes are saved on " + chalk.blue(finalData.name) + chalk.blue(".json") + ". Please enter " + chalk.blue("view") + " to view the file.");
+    }
+    else {
+        // console.log("exists");
+        // console.log(userDetails);
+        fs.appendFileSync(`${__dirname}/../files/${finalData.name}.json`, userDetails, (err) => {
+            if (err) {
+                console.log("error")
+            }
+        })
+        console.log("\n" + "Your jokes are saved on " + chalk.blue(finalData.name) + chalk.blue(".json") + ". Please enter " + chalk.blue("view") + " to view the file.");
+    }
+
+
 
 }
 const readStoredData = () => {
     const storedData = fs.readFileSync(`${__dirname}/../files/${finalData.name}.json`, "utf-8");
     // const parsedStoredData = JSON.parse(storedData);
-    console.log(chalk.green(storedData));
+    console.table(chalk.green(storedData));
 }
 
 
@@ -60,12 +77,12 @@ export const shortcutCommand = async () => {
                 await getJoke(category);
                 storeData();
                 break
-            case "v":
+            case "view":
                 readStoredData();
                 break
             case "help":
                 showWelcomeBanner();
-                continue
+                break
             case "x":
                 return
             // default:
