@@ -6,7 +6,7 @@ import { finalData } from "../data/finalData.js";
 
 export const getJoke = async (category, userName) => {
     const joke = await axios.get(`https://api.chucknorris.io/jokes/random?category=${category}`);
-    console.log(joke.data.value);
+    console.log(chalk.green(joke.data.value));
     finalData.joke = joke.data.value;
 
 }

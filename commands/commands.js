@@ -44,6 +44,12 @@ const storeData = () => {
     });
 
 }
+const readStoredData = () => {
+    const storedData = fs.readFileSync(`${__dirname}/../files/${finalData.name}.json`, "utf-8");
+    // const parsedStoredData = JSON.parse(storedData);
+    console.log(chalk.green(storedData));
+}
+
 
 export const shortcutCommand = async () => {
     while (true) {
@@ -53,6 +59,9 @@ export const shortcutCommand = async () => {
                 const category = await listCategories();
                 await getJoke(category);
                 storeData();
+                break
+            case "v":
+                readStoredData();
                 break
             case "help":
                 showWelcomeBanner();
@@ -65,6 +74,7 @@ export const shortcutCommand = async () => {
 
     }
 }
+
 
 
 
