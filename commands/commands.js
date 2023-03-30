@@ -87,12 +87,18 @@ export const shortcutCommand = async () => {
                 showWelcomeBanner();
                 break
             case "x":
+                // console.log("Sad to see you go. Come back soon!!!");
                 return
             // default:
             //     showWelcomeBanner();
         }
 
     }
+}
+export const createFileFolder = () => {
+    const fileExistence = fs.existsSync(`${__dirname}/../files`, "utf-8");
+    if (!fileExistence)
+        fs.mkdirSync("files");
 }
 
 
