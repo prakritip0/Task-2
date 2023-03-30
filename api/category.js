@@ -19,11 +19,11 @@ export const listCategories = async () => {
     const chosenCategory = prompt(">");
     // console.log(Number(chosenCategory));
     if (isNaN(Number(chosenCategory))) {
-        finalData.category = chosenCategory;
+        finalData.category.push = chosenCategory;
         return chosenCategory;
 
     } else {
-        finalData.category = categoryData.data[chosenCategory - 1];
+        finalData.category.push = categoryData.data[chosenCategory - 1];
         return categoryData.data[chosenCategory - 1];
 
     }
