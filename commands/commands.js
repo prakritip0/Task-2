@@ -63,8 +63,11 @@ const storeData = () => {
 }
 const readStoredData = () => {
     const storedData = fs.readFileSync(`${__dirname}/../files/${finalData.name}.json`, "utf-8");
-    // const parsedStoredData = JSON.parse(storedData);
-    console.table(chalk.green(storedData));
+    const stringifiedStoredData = `${storedData}`;
+    const parsedStoredData = JSON.parse(stringifiedStoredData);
+    // console.log(parsedStoredData);
+
+    console.table([parsedStoredData]);
 }
 
 
