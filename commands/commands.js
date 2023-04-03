@@ -12,8 +12,6 @@ import { dirname } from 'path';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-
-
 export const prompt = promptSync();
 
 export const showAppTitle = () => {
@@ -36,8 +34,6 @@ const storeData = () => {
     const readerFile = fs.existsSync(`${__dirname}/../files/${finalData.name}.json`, "utf-8");
 
     if (!readerFile) {
-        // console.log("doesntExist");
-        // console.log(readerFile);
         fs.writeFileSync(`${__dirname}/../files/${finalData.name}.json`, userDetails, (err) => {
             if (err) {
                 console.log("error")
@@ -48,8 +44,6 @@ const storeData = () => {
         console.log("\n" + "Your jokes are saved on " + chalk.blue(finalData.name) + chalk.blue(".json") + ". Please enter " + chalk.blue("view") + " to view the file.");
     }
     else {
-        // console.log("exists");
-        // console.log(userDetails);
         fs.appendFileSync(`${__dirname}/../files/${finalData.name}.json`, `\n${userDetails}`, (err) => {
             if (err) {
                 console.log("error")
@@ -57,22 +51,14 @@ const storeData = () => {
         })
         console.log("\n" + "Your jokes are saved on " + chalk.blue(finalData.name) + chalk.blue(".json") + ". Please enter " + chalk.blue("view") + " to view the file.");
     }
-
-
-
 }
 const readStoredData = () => {
     const storedDataArray = [];
     const storedData = fs.readFileSync(`${__dirname}/../files/${finalData.name}.json`, "utf-8");
     const stringifiedStoredData = `${storedData}`;
-    // const parsedStoredData = JSON.parse(stringifiedStoredData);
     stringifiedStoredData.split("\n").forEach((singleOutputData) => {
-        // console.log(singleOutputData)
         storedDataArray.push(JSON.parse(singleOutputData));
     })
-    // console.log(parsedStoredData);
-
-    // console.table([parsedStoredData]);
     console.log(storedDataArray);
 }
 
@@ -93,10 +79,7 @@ export const shortcutCommand = async () => {
                 showWelcomeBanner();
                 break
             case "x":
-                // console.log("Sad to see you go. Come back soon!!!");
                 return
-            // default:
-            //     showWelcomeBanner();
         }
 
     }
@@ -106,10 +89,3 @@ export const createFileFolder = () => {
     if (!fileExistence)
         fs.mkdirSync("files");
 }
-
-
-
-
-
-
-
