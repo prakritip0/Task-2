@@ -23,7 +23,7 @@ export const showWelcomeBanner = () => {
 }
 
 export const askName = () => {
-    // console.log(chalk.green("What is your name?"));
+    console.log(chalk.green("What is your name?"));
     // const name = prompt(">>");
     // finalData.name = name;
     // return name;
