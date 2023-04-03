@@ -16,8 +16,8 @@ const main = () => {
         console.log(chalk.bgWhite("Please press 'c' if you aren't aware of our categories!!"));
     }
     shortcutCommand();
-
 }
+
 
 main();
 
