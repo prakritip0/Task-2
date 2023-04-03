@@ -50,7 +50,7 @@ const storeData = () => {
     else {
         // console.log("exists");
         // console.log(userDetails);
-        fs.appendFileSync(`${__dirname}/../files/${finalData.name}.json`, userDetails, (err) => {
+        fs.appendFileSync(`${__dirname}/../files/${finalData.name}.json`, `\n${userDetails}`, (err) => {
             if (err) {
                 console.log("error")
             }
@@ -62,12 +62,18 @@ const storeData = () => {
 
 }
 const readStoredData = () => {
+    const storedDataArray = [];
     const storedData = fs.readFileSync(`${__dirname}/../files/${finalData.name}.json`, "utf-8");
     const stringifiedStoredData = `${storedData}`;
-    const parsedStoredData = JSON.parse(stringifiedStoredData);
+    // const parsedStoredData = JSON.parse(stringifiedStoredData);
+    stringifiedStoredData.split("\n").forEach((singleOutputData) => {
+        // console.log(singleOutputData)
+        storedDataArray.push(JSON.parse(singleOutputData));
+    })
     // console.log(parsedStoredData);
 
-    console.table([parsedStoredData]);
+    // console.table([parsedStoredData]);
+    console.log(storedDataArray);
 }
 
 
