@@ -12,10 +12,11 @@ export const listCategories = async () => {
         categoryData.data.forEach((category, i) => {
             console.log(chalk.green("[" + (i + 1) + "]") + " " + chalk.green(category));
         });
+        console.log("\n" + chalk.bgGreen("Please enter one of the above categories to hear a joke!"));
     } catch (error) {
-        console.error;
+        console.error("\n" + chalk.red("error fetching category") + "\n");
     }
-    console.log("\n" + chalk.bgGreen("Please enter one of the above categories to hear a joke!"));
+
     const chosenCategory = prompt(">");
     // console.log(Number(chosenCategory));
     if (isNaN(Number(chosenCategory))) {
