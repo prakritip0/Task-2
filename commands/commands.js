@@ -37,7 +37,7 @@ export const askName = () => {
 
 const storeData = () => {
     const userDetails = JSON.stringify(finalData);
-    fs.writeFileSync(`${__dirname}/../files/${finalData.name}.json`, userDetails, { flag: "a" })
+    fs.appendFileSync(`${__dirname}/../files/${finalData.name}.json`, `\n${userDetails}`, { flag: "a" })
     console.log("\n" + "Your jokes are saved on " + chalk.blue(finalData.name) + chalk.blue(".json") + ". Please enter " + chalk.blue("view") + " to view the file.");
 }
 
@@ -45,10 +45,10 @@ const readStoredData = () => {
     const storedDataArray = [];
     const storedData = fs.readFileSync(`${__dirname}/../files/${finalData.name}.json`, "utf-8");
     const stringifiedStoredData = `${storedData}`;
-    stringifiedStoredData.split("\n").forEach((singleOutputData) => {
-        storedDataArray.push(JSON.parse(singleOutputData));
-    })
-    console.log(storedDataArray);
+    // stringifiedStoredData.split("\n").forEach((singleOutputData) => {
+    //     storedDataArray.push(JSON.parse(singleOutputData));
+    // })
+    console.log(storedData);
 }
 
 
@@ -69,6 +69,9 @@ export const shortcutCommand = async () => {
                 break
             case "x":
                 return
+            default:
+                showWelcomeBanner();
+                break
         }
 
     }

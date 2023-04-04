@@ -6,9 +6,11 @@ import { finalData } from "../data/finalData.js";
 const prompt = PromptSync();
 
 export const listCategories = async () => {
-    
+
     try {
         const categoryData = await axios.get("https://api.chucknorris.io/jokes/categories");
+        // const categoryJsonData = categoryData.json();
+        // console.log(categoryData)
         categoryData.data.forEach((category, i) => {
             console.log(chalk.green("[" + (i + 1) + "]") + " " + chalk.green(category));
         });
@@ -25,6 +27,7 @@ export const listCategories = async () => {
 
         }
     } catch (error) {
-        console.error("\n" + chalk.red("error fetching category") + "\n");
+        // console.error("\n" + chalk.red("error fetching category") + "\n");
+        console.error(error)
     }
 }
