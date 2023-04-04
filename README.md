@@ -29,3 +29,5 @@ git@github.com:prakritip0/task-2.git
 # Compatibility
 
 -MacOS -Windows -Linux
+
+![Screenshot](screenshot.png)

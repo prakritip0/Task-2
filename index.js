@@ -1,7 +1,14 @@
 import chalk from "chalk";
 import { askName, prompt, shortcutCommand } from "./commands/commands.js";
+import { showAppTitle } from "./commands/commands.js";
+import { showWelcomeBanner, createFileFolder } from "./commands/commands.js";
+
+
 
 const main = () => {
+    showAppTitle();
+    showWelcomeBanner();
+    createFileFolder();
     const name = askName();
 
     if (name) {
@@ -11,6 +18,9 @@ const main = () => {
     shortcutCommand();
 }
 
+
 main();
+
+
 
 
