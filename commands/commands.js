@@ -37,27 +37,10 @@ export const askName = () => {
 
 const storeData = () => {
     const userDetails = JSON.stringify(finalData);
-    const readerFile = fs.existsSync(`${__dirname}/../files/${finalData.name}.json`, "utf-8");
-
-    if (!readerFile) {
-        fs.writeFileSync(`${__dirname}/../files/${finalData.name}.json`, userDetails, (err) => {
-            if (err) {
-                console.log("error")
-            }
-            console.log("\n" + "Your jokes are saved on " + chalk.blue(finalData.name) + chalk.blue(".json") + ". Please enter " + chalk.blue("view") + " to view the file.");
-
-        });
-        console.log("\n" + "Your jokes are saved on " + chalk.blue(finalData.name) + chalk.blue(".json") + ". Please enter " + chalk.blue("view") + " to view the file.");
-    }
-    else {
-        fs.appendFileSync(`${__dirname}/../files/${finalData.name}.json`, `\n${userDetails}`, (err) => {
-            if (err) {
-                console.log("error")
-            }
-        })
-        console.log("\n" + "Your jokes are saved on " + chalk.blue(finalData.name) + chalk.blue(".json") + ". Please enter " + chalk.blue("view") + " to view the file.");
-    }
+    fs.writeFileSync(`${__dirname}/../files/${finalData.name}.json`, userDetails, { flag: "a" })
+    console.log("\n" + "Your jokes are saved on " + chalk.blue(finalData.name) + chalk.blue(".json") + ". Please enter " + chalk.blue("view") + " to view the file.");
 }
+
 const readStoredData = () => {
     const storedDataArray = [];
     const storedData = fs.readFileSync(`${__dirname}/../files/${finalData.name}.json`, "utf-8");

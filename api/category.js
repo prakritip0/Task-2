@@ -6,9 +6,9 @@ import { finalData } from "../data/finalData.js";
 const prompt = PromptSync();
 
 export const listCategories = async () => {
-    let categoryData = {};
+    
     try {
-        categoryData = await axios.get("https://api.chucknorris.io/jokes/categories");
+        const categoryData = await axios.get("https://api.chucknorris.io/jokes/categories");
         categoryData.data.forEach((category, i) => {
             console.log(chalk.green("[" + (i + 1) + "]") + " " + chalk.green(category));
         });
