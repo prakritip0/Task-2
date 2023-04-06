@@ -2,13 +2,14 @@ import axios from "axios";
 import chalk from "chalk";
 import PromptSync from "prompt-sync";
 import { finalData } from "../data/finalData.js";
+import https from "https";
 
 const prompt = PromptSync();
 
 export const listCategories = async () => {
 
     try {
-        const categoryData = await axios.get("https://api.chucknorris.io/jokes/categories");
+        const categoryData = await axios.get("https://api.chucknorris.io/jokes/categories", {httpsAgent: new https.Agent({ keepAlive: true })});
         // const categoryJsonData = categoryData.json();
         // console.log(categoryData)
         categoryData.data.forEach((category, i) => {
