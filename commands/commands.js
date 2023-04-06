@@ -51,7 +51,7 @@ const storeData = () => {
         });
 
         // userDetailsArray.push(content);
-        // userDetailsArray.push(finalData);
+        userDetailsArray.push(finalData);
         fs.writeFileSync(`${__dirname}/../files/${finalData.name}.json`, JSON.stringify(userDetailsArray))
 
     } else {
