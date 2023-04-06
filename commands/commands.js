@@ -36,6 +36,11 @@ export const askName = () => {
 }
 
 const storeData = () => {
+    try {
+        const content = fs.readFileSync(`${__dirname}/../files/${finalData.name}.json`, `\n${userDetails}`, "utf-8", { flag: "a+" })
+    }catch(error){
+        console.error(error)
+    }
     const userDetails = JSON.stringify(finalData);
     fs.appendFileSync(`${__dirname}/../files/${finalData.name}.json`, `\n${userDetails}`, { flag: "a" })
     console.log("\n" + "Your jokes are saved on " + chalk.blue(finalData.name) + chalk.blue(".json") + ". Please enter " + chalk.blue("view") + " to view the file.");
