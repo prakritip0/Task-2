@@ -3,5 +3,5 @@ export const shortcuts = {
     "exit_project": "x",
     "view_jokes_database": "view",
     "ask_for_help": "help",
-    "fliter_jokes":"<your-name> <category-name>"
+    "fliter_jokes":"filter"
 }

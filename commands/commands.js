@@ -42,6 +42,7 @@ const storeData = () => {
     // const userDetails = JSON.stringify(finalData);
     // const userDetailsArray = [];
     // userDetailsArray.push(finalData);
+    userDetailsArray.length = 0
     const checker = fs.existsSync(`${__dirname}/../files/${finalData.name}.json`)
     if (checker) {
         const content = fs.readFileSync(`${__dirname}/../files/${finalData.name}.json`, "utf-8")
@@ -51,41 +52,63 @@ const storeData = () => {
         });
 
         // userDetailsArray.push(content);
-        // userDetailsArray.push(finalData);
+        userDetailsArray.push(finalData);
         fs.writeFileSync(`${__dirname}/../files/${finalData.name}.json`, JSON.stringify(userDetailsArray))
 
     } else {
         userDetailsArray.push(finalData);
         fs.writeFileSync(`${__dirname}/../files/${finalData.name}.json`, JSON.stringify(userDetailsArray));
     }
-    // try {
-    //     const content = fs.readFileSync(`${__dirname}/../files/${finalData.name}.json`,JSON.stringify(userDetailsArray), "utf-8", { flag: "a+" })
-    // } catch (error) {
-    //     console.error(error)
-    // }
 
-    //fs.appendFileSync(`${__dirname}/../files/${finalData.name}.json`, `\n${userDetails}`, { flag: "a" })
     console.log("\n" + "Your jokes are saved on " + chalk.blue(finalData.name) + chalk.blue(".json") + ". Please enter " + chalk.blue("view") + " to view the file.");
 }
 
 const readStoredData = () => {
-    // const storedDataArray = [];
-    // const storedData = fs.readFileSync(`${__dirname}/../files/${finalData.name}.json`, "utf-8");
-    // const stringifiedStoredData = `${storedData}`;
-    // stringifiedStoredData.split("\n").forEach((singleOutputData) => {
-    //     storedDataArray.push(JSON.parse(singleOutputData));
-    // })
     console.log(userDetailsArray);
 }
 
-// const flagJokes = () => {
-//     const flagCommand = prompt(">>")
-//     userDetailsArray.filter((entry) => {
-//         if (entry.name === finalData.name && entry.category ===) {
-//             return true;
-//         }
-//     })
-// }
+const filterJokes = () => {
+    console.log(chalk.green("Enter a name to access the file saved on that name!"))
+    const filterName = prompt(">>")
+    const filterFileLocation = `${__dirname}/../files/${filterName}.json`;
+    const filterFileExists = fs.existsSync(filterFileLocation);
+
+    // console.log(filterReader);
+    if (filterFileExists) {
+        const filterReader = fs.readFileSync(filterFileLocation, "utf-8");
+        const filterReaderArray = JSON.parse(filterReader);
+
+        console.log(chalk.green(`Please enter a category within ${filterName}'s file.`))
+        const filterCategory = prompt(">>");
+        const categoryExists = filterReaderArray.some((singleEntry) => {
+            return singleEntry.category == filterCategory ? true : false;
+        })
+        if (categoryExists) {
+            const selectedCategory = filterReaderArray.filter((singleEntry) => {
+                return singleEntry.category == filterCategory;
+            })
+            console.log("\n"+chalk.green(`Total jokes in ${filterCategory} category :`) + ` ${selectedCategory.length}`);
+            console.log(selectedCategory);
+        } else {
+            console.log(chalk.red("Invalid category. Please try again!"))
+        }
+        // filterReaderArray.filter((singleEntry) => {
+        //     console.log(singleEntry.category)
+        // })
+
+        // if(`${__dirname}/../files/${filterName}.json`)
+
+        // userDetailsArray.filter((entry) => {
+        //     if (entry.name === finalData.name && entry.category ===) {
+        //         return true;
+        //     }
+        // })
+    } else {
+        console.log(chalk.red(`There is no file saved on the name of ${filterName}. Please try again!!`))
+    }
+
+
+}
 
 
 export const shortcutCommand = async () => {
@@ -99,6 +122,9 @@ export const shortcutCommand = async () => {
                 break
             case "view":
                 readStoredData();
+                break
+            case "filter":
+                filterJokes();
                 break
             case "help":
                 showWelcomeBanner();
