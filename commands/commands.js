@@ -22,13 +22,8 @@ export const showWelcomeBanner = () => {
     console.log("\n \n" + chalk.bgGreen(constantValues.description) + "\n\n" + constantValues.jokeCategories + chalk.red(shortcuts.see_joke_categories) + "\n" + constantValues.exitProgram + chalk.red(shortcuts.exit_project) + "\n" + constantValues.viewJokesDatabase + chalk.red(shortcuts.view_jokes_database) + "\n" + constantValues.filterJokesByCategory + chalk.red(shortcuts.fliter_jokes) + "\n" + constantValues.askForHelp + chalk.red(shortcuts.ask_for_help) + "\n");
 }
 
-
-
 export const askName = () => {
     console.log(chalk.green("What is your name?"));
-    // const name = prompt(">>");
-    // finalData.name = name;
-    // return name;
     let name = '';
     while (!name) {
         name = prompt(">>");
@@ -39,9 +34,6 @@ export const askName = () => {
 
 const userDetailsArray = [];
 const storeData = () => {
-    // const userDetails = JSON.stringify(finalData);
-    // const userDetailsArray = [];
-    // userDetailsArray.push(finalData);
     userDetailsArray.length = 0
     const checker = fs.existsSync(`${__dirname}/../files/${finalData.name}.json`)
     if (checker) {
@@ -73,7 +65,6 @@ const filterJokes = () => {
     const filterFileLocation = `${__dirname}/../files/${filterName}.json`;
     const filterFileExists = fs.existsSync(filterFileLocation);
 
-    // console.log(filterReader);
     if (filterFileExists) {
         const filterReader = fs.readFileSync(filterFileLocation, "utf-8");
         const filterReaderArray = JSON.parse(filterReader);
@@ -87,22 +78,11 @@ const filterJokes = () => {
             const selectedCategory = filterReaderArray.filter((singleEntry) => {
                 return singleEntry.category == filterCategory;
             })
-            console.log("\n"+chalk.green(`Total jokes in ${filterCategory} category :`) + ` ${selectedCategory.length}`);
+            console.log("\n" + chalk.green(`Total jokes in ${filterCategory} category :`) + ` ${selectedCategory.length}`);
             console.log(selectedCategory);
         } else {
             console.log(chalk.red("Invalid category. Please try again!"))
         }
-        // filterReaderArray.filter((singleEntry) => {
-        //     console.log(singleEntry.category)
-        // })
-
-        // if(`${__dirname}/../files/${filterName}.json`)
-
-        // userDetailsArray.filter((entry) => {
-        //     if (entry.name === finalData.name && entry.category ===) {
-        //         return true;
-        //     }
-        // })
     } else {
         console.log(chalk.red(`There is no file saved on the name of ${filterName}. Please try again!!`))
     }
@@ -117,8 +97,11 @@ export const shortcutCommand = async () => {
         switch (shortCommand) {
             case "c":
                 const category = await listCategories();
-                await getJoke(category);
-                storeData();
+                if (category) {
+                    await getJoke(category);
+                    storeData();
+                    break
+                }
                 break
             case "view":
                 readStoredData();
