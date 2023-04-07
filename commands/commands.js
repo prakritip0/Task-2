@@ -56,7 +56,9 @@ const storeData = () => {
 }
 
 const readStoredData = () => {
-    console.log(userDetailsArray);
+
+    const storedData = fs.readFileSync(`${__dirname}/../files/${finalData.name}.json`, "utf-8");
+    console.log(JSON.parse(storedData));
 }
 
 const filterJokes = () => {
