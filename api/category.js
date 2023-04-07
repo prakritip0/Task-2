@@ -5,12 +5,12 @@ import { finalData } from "../data/finalData.js";
 import https from "https";
 
 const prompt = PromptSync();
+export const apiBaseURL = "https://api.chucknorris.io/jokes/";
 
 export const listCategories = async () => {
 
-
     try {
-        const categoryData = await axios.get("https://api.chucknorris.io/jokes/categories", { httpsAgent: new https.Agent({ keepAlive: true }) });
+        const categoryData = await axios.get(`${apiBaseURL}categories`, { httpsAgent: new https.Agent({ keepAlive: true }) });
         categoryData.data.forEach((category, i) => {
             console.log(chalk.green("[" + (i + 1) + "]") + " " + chalk.green(category));
         });
