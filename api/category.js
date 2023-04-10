@@ -35,3 +35,14 @@ export const listCategories = async () => {
         console.error(error)
     }
 }
+
+// if (chosenCategory == "") return 
+//     if (isNaN(Number(chosenCategory))) {
+//         finalData.category = chosenCategory;
+//         return chosenCategory;
+
+//     } else {
+//         finalData.category = categoryData.data[chosenCategory - 1];
+//         return categoryData.data[chosenCategory - 1];
+ 
+// } 
