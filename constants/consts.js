@@ -4,5 +4,6 @@ export const constantValues = {
     "jokeCategories": "See Joke Categories : ",
     "exitProgram": "Exit the Program : ",
     "viewJokesDatabase": "View the Jokes Database : ",
-    "askForHelp": "Ask for help : "
+    "askForHelp": "Ask for help : ",
+    "filterJokesByCategory": "Filter through our jokes database : "
 }
