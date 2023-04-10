@@ -25,25 +25,10 @@ export const listCategories = async () => {
         if (isNaN(Number(chosenCategory))) {
             finalData.category = chosenCategory;
             return chosenCategory;
-
-        } else {
+        } 
             finalData.category = categoryData.data[chosenCategory - 1];
             return categoryData.data[chosenCategory - 1];
-        }
-        // if (chosenCategory !== "") {
-        //     if (isNaN(Number(chosenCategory))) {
-        //         finalData.category = chosenCategory;
-        //         return chosenCategory;
-
-        //     } else {
-        //         finalData.category = categoryData.data[chosenCategory - 1];
-        //         return categoryData.data[chosenCategory - 1];
-
-        //     }
-        // } else {
-        //     console.log(chalk.red("invalid category!!!"))
-        //     return null
-        // }
+        
     } catch (error) {
         console.error(error)
     }
