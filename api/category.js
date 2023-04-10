@@ -17,32 +17,34 @@ export const listCategories = async () => {
         console.log("\n" + chalk.bgGreen("Please enter one of the above categories to hear a joke!"));
 
         const chosenCategory = prompt(">");
-        if (chosenCategory !== "") {
-            if (isNaN(Number(chosenCategory))) {
-                finalData.category = chosenCategory;
-                return chosenCategory;
-
-            } else {
-                finalData.category = categoryData.data[chosenCategory - 1];
-                return categoryData.data[chosenCategory - 1];
-
-            }
-        } else {
-            console.log(chalk.red("invalid category!!!"))
-            return null
+        if (chosenCategory == "") {
+            console.log(chalk.red("Invalid Category!!!"))
+            return
         }
+        if (isNaN(Number(chosenCategory))) {
+            finalData.category = chosenCategory;
+            return chosenCategory;
+
+        } else {
+            finalData.category = categoryData.data[chosenCategory - 1];
+            return categoryData.data[chosenCategory - 1];
+        }
+        // if (chosenCategory !== "") {
+        //     if (isNaN(Number(chosenCategory))) {
+        //         finalData.category = chosenCategory;
+        //         return chosenCategory;
+
+        //     } else {
+        //         finalData.category = categoryData.data[chosenCategory - 1];
+        //         return categoryData.data[chosenCategory - 1];
+
+        //     }
+        // } else {
+        //     console.log(chalk.red("invalid category!!!"))
+        //     return null
+        // }
     } catch (error) {
         console.error(error)
     }
 }
 
-// if (chosenCategory == "") return 
-//     if (isNaN(Number(chosenCategory))) {
-//         finalData.category = chosenCategory;
-//         return chosenCategory;
-
-//     } else {
-//         finalData.category = categoryData.data[chosenCategory - 1];
-//         return categoryData.data[chosenCategory - 1];
- 
-// } 
