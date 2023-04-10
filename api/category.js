@@ -10,7 +10,7 @@ export const apiBaseURL = "https://api.chucknorris.io/jokes/";
 export const listCategories = async () => {
 
     try {
-        const categoryData = await axios.get(`${apiBaseURL}categories`, { httpsAgent: new https.Agent({ keepAlive: true }) });
+        const categoryData = await axios.get(`${apiBaseURL}categories`);
         categoryData.data.forEach((category, i) => {
             // console.log(chalk.green("[" + (i + 1) + "]") + " " + chalk.green(category));
             console.log(chalk.green(`[${(i + 1)}] ${category}`));
