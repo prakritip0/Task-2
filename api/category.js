@@ -12,7 +12,8 @@ export const listCategories = async () => {
     try {
         const categoryData = await axios.get(`${apiBaseURL}categories`, { httpsAgent: new https.Agent({ keepAlive: true }) });
         categoryData.data.forEach((category, i) => {
-            console.log(chalk.green("[" + (i + 1) + "]") + " " + chalk.green(category));
+            // console.log(chalk.green("[" + (i + 1) + "]") + " " + chalk.green(category));
+            console.log(chalk.green(`[${(i + 1)}] ${category}`));
         });
         console.log("\n" + chalk.bgGreen("Please enter one of the above categories to hear a joke!"));
 
